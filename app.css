@@ -1,327 +1,100 @@
-/* wwwroot/css/custom.css */
-
 :root {
-    --brand-orange: #FF8C00; /* Donkerder, krachtig oranje */
-    --brand-dark: #222222;   /* Heel donkergrijs (bijna zwart) */
-    --brand-light-gray: #F0F0F0;
-    --brand-medium-gray: #D3D3D3; /* Iets donkerder grijs voor borders etc. */
-    --text-color: #333333;
-    --background-color: #FFFFFF;
-    --link-color: var(--brand-orange);
-    --link-hover-color: #E07B00; /* Iets donkerder oranje voor hover */
-
-    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --primary-color: #FF8C00; /* Oranje */
+    --secondary-color: #333333; /* Zwart (donkergrijs) */
+    --tertiary-color: #666666; /* Middengrijs */
+    --light-gray: #EEEEEE; /* Lichtgrijs voor achtergronden */
+    --text-color: #333333; /* Zwart voor tekst */
+    --white: #FFFFFF; /* Wit */
+    --success-color: #4CAF50; /* Groen */
+    --error-color: #F44336; /* Rood */
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --sidebar-bg: #333333; /* Zwart als achtergrond voor sidebar */
+    --sidebar-text: #FFFFFF; /* Witte tekst in sidebar */
 }
 
-/* Basis Reset & Globale Stijlen */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px; /* Basis lettergrootte */
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-family-sans-serif);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6;
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--light-gray);
     color: var(--text-color);
-    background-color: var(--background-color);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-    line-height: 1.2;
-    color: var(--brand-dark);
+h1:focus {
+    outline: none;
 }
 
-h1 { font-size: 2.25rem; }
-h2 { font-size: 1.875rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
-h5 { font-size: 1.125rem; }
-h6 { font-size: 1rem; }
-
-p {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-a {
-    color: var(--link-color);
+a, .btn-link {
+    color: var(--primary-color);
     text-decoration: none;
-    background-color: transparent;
+    transition: color 0.2s ease;
 }
 
-a:hover {
-    color: var(--link-hover-color);
+a:hover, .btn-link:hover {
+    color: #E67300; /* Donkerdere oranje voor hover */
     text-decoration: underline;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-}
-
-/* Layout Stijlen (gebaseerd op standaard Blazor template structuur) */
-.page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.sidebar {
-    background-color: var(--brand-dark);
-    color: var(--brand-light-gray);
-    padding: 1rem;
-    min-width: 250px; /* Of een andere gewenste breedte */
-}
-
-.sidebar .nav-item {
-    font-size: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-}
-
-.sidebar .nav-link {
-    color: var(--brand-light-gray);
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-.sidebar .nav-link:hover,
-.sidebar .nav-link.active {
-    color: var(--brand-orange);
-    background-color: rgba(255, 255, 255, 0.1);
-    text-decoration: none;
-}
-
-main {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.top-row {
-    background-color: var(--brand-light-gray);
-    border-bottom: 1px solid var(--brand-medium-gray);
-    padding: 0.75rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Of space-between als je links ook iets wilt */
-    height: auto; /* Aangepast van vaste hoogte */
-}
-
-.top-row a, .top-row .btn-link {
-    color: var(--brand-dark);
-}
-
-.content {
-    padding: 1.5rem; /* Meer padding voor content area */
-    flex-grow: 1;
-}
-
-/* Formulieren & Knoppen */
-.form-control {
-    display: block;
-    width: 100%;
-    padding: 0.5rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    background-clip: padding-box;
-    border: 1px solid var(--brand-medium-gray);
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-control:focus {
-    border-color: var(--brand-orange);
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25); /* Oranje focus glow */
-}
-
-.btn {
-    display: inline-block;
-    font-weight: 500;
-    color: var(--background-color); /* Witte tekst op gekleurde knoppen */
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
 .btn-primary {
-    color: var(--background-color);
-    background-color: var(--brand-orange);
-    border-color: var(--brand-orange);
+    color: var(--white);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
 }
 
 .btn-primary:hover {
-    color: var(--background-color);
-    background-color: var(--link-hover-color); /* Donkerder oranje */
-    border-color: var(--link-hover-color);
+    background-color: #E67300; /* Donkerdere oranje voor hover */
 }
 
-.btn-secondary {
-    color: var(--background-color);
-    background-color: var(--brand-dark);
-    border-color: var(--brand-dark);
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem var(--white), 0 0 0 0.25rem var(--primary-color);
+    outline: none;
 }
 
-.btn-secondary:hover {
-    color: var(--background-color);
-    background-color: #444444; /* Iets lichter dan brand-dark */
-    border-color: #444444;
+.content {
+    padding-top: 1.1rem;
+    padding-bottom: 2rem; /* Meer padding onderaan */
+    background-color: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
-.btn-success { /* Als je deze gebruikt voor "Add to cart" */
-    color: #fff;
-    background-color: #28a745; /* Standaard groen, kun je ook aanpassen */
-    border-color: #28a745;
+/* Zorg dat alle pagina's voldoende padding onderaan hebben */
+.page {
+    padding-bottom: 2rem;
 }
 
-.btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid var(--success-color);
 }
 
-
-/* Sock Store Specifieke Stijlen */
-.card {
-    border: 1px solid var(--brand-medium-gray);
-    border-radius: 0.375rem; /* Iets rondere hoeken */
-    background-color: var(--background-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Zorgt dat kaarten in een rij gelijke hoogte hebben als ze in flex container zitten */
+.invalid {
+    outline: 1px solid var(--error-color);
 }
 
-.card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transform: translateY(-3px);
-}
-
-.card-img-top {
-    width: 100%;
-    /* height: 200px; Aangepaste hoogte per kaart kan beter zijn of via aspect-ratio */
-    aspect-ratio: 4/3; /* Zorgt voor consistente afbeeldingsverhouding */
-    object-fit: cover;
-    border-top-left-radius: calc(0.375rem - 1px);
-    border-top-right-radius: calc(0.375rem - 1px);
-}
-
-.card-body {
-    padding: 1.25rem;
-    flex-grow: 1; /* Zorgt dat card-body de resterende ruimte vult */
-    display: flex;
-    flex-direction: column;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--brand-dark);
-}
-
-.card-text {
+.validation-message {
+    color: var(--error-color);
     font-size: 0.9rem;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-    flex-grow: 1; /* Laat de beschrijving groeien */
 }
 
-.card-text strong { /* Prijs styling */
-    color: var(--brand-orange);
-    font-weight: 700;
-}
-
-/* Product Detail Pagina */
-.product-details-page img.img-fluid {
-    border-radius: 0.375rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
-}
-
-.product-details-page h3 {
-    color: var(--brand-orange);
-    margin-bottom: 1rem;
-}
-
-.product-details-page h4 { /* Prijs */
-    color: var(--brand-dark);
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Utility classes (optioneel) */
-.mb-1 { margin-bottom: 0.25rem !important; }
-.mb-2 { margin-bottom: 0.5rem !important; }
-.mb-3 { margin-bottom: 1rem !important; }
-.mt-1 { margin-top: 0.25rem !important; }
-.mt-2 { margin-top: 0.5rem !important; }
-.mt-3 { margin-top: 1rem !important; }
-
-.text-orange {
-    color: var(--brand-orange) !important;
-}
-
-/* Media Queries voor responsiviteit (voorbeeld) */
-@media (min-width: 768px) {
-    .page {
-        flex-direction: row; /* Sidebar naast content op grotere schermen */
-    }
-
-    main {
-        width: 100%; /* Zodat main de resterende breedte pakt */
-    }
-
-    .sidebar {
-        /* Eventueel hoogte aanpassen als het niet 100vh is */
-    }
-
-    .content {
-        padding: 2rem;
-    }
-}
-
-/* Aanpassingen voor Blazor's default error UI (als je die gebruikt) */
 #blazor-error-ui {
-    background: var(--brand-light-gray);
+    background: var(--light-gray);
+    color: var(--text-color);
     bottom: 0;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
+    box-sizing: border-box;
     display: none;
     left: 0;
     padding: 0.6rem 1.25rem 0.7rem 1.25rem;
     position: fixed;
     width: 100%;
     z-index: 1000;
-    color: var(--brand-dark);
+    border-top: 2px solid var(--primary-color);
 }
 
 #blazor-error-ui .dismiss {
@@ -329,19 +102,270 @@ main {
     position: absolute;
     right: 0.75rem;
     top: 0.5rem;
-    color: var(--brand-dark);
+    font-weight: bold;
 }
 
-/* Stijl voor validatieberichten */
-.validation-message {
-    color: #dc3545; /* Rood voor errors */
-    font-size: 0.875em;
+.blazor-error-boundary {
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, var(--secondary-color);
+    padding: 1rem 1rem 1rem 3.7rem;
+    color: var(--white);
+    border-radius: 4px;
 }
 
-.invalid.form-control {
-    border-color: #dc3545;
+.blazor-error-boundary::after {
+    content: "Er is een fout opgetreden.";
 }
 
-.valid.form-control {
-    border-color: #28a745;
+.loading-progress {
+    position: relative;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 20vh auto 1rem auto;
+}
+
+.loading-progress circle {
+    fill: none;
+    stroke: var(--tertiary-color);
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+
+.loading-progress circle:last-child {
+    stroke: var(--primary-color);
+    stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+    transition: stroke-dasharray 0.05s ease-in-out;
+}
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+    color: var(--secondary-color);
+}
+
+.loading-progress-text:after {
+    content: var(--blazor-load-percentage-text, "Laden");
+}
+
+code {
+    color: var(--primary-color);
+    background-color: var(--light-gray);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Moderne input styling */
+.form-control {
+    border: 1px solid var(--tertiary-color);
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+}
+
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--tertiary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+/* Card styling voor een moderne, platte UI */
+.card {
+    border: none;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 6px 6px 0 0 !important;
+    border: none;
+}
+
+.card-footer {
+    background-color: var(--light-gray);
+    border-top: none;
+}
+
+/* Sidebar en navigatie styling */
+.sidebar {
+    background-color: var(--sidebar-bg) !important;
+    background-image: none !important; /* Verwijdert eventuele gradient */
+}
+
+/* Voor de top-row in de sidebar */
+.sidebar .top-row {
+    background-color: var(--sidebar-bg) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Voor Blazor WebAssembly's standaard achtergrond patroon */
+.sidebar {
+    background-image: none !important;
+}
+
+div.sidebar {
+    background-color: var(--sidebar-bg) !important;
+}
+
+.sidebar .navbar-brand {
+    color: var(--sidebar-text) !important;
+}
+
+.sidebar .oi {
+    color: var(--primary-color) !important;
+}
+
+/* NavMenu achtergrond */
+.navbar-toggler {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+    border: none !important;
+}
+
+/* Navigatie links in sidebar */
+.nav-item ::deep a {
+    color: var(--sidebar-text) !important;
+    background-color: transparent !important;
+}
+
+.nav-item ::deep a:hover {
+    background-color: rgba(255, 140, 0, 0.3) !important;
+    color: var(--white) !important;
+}
+
+.nav-item ::deep a.active {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+}
+
+/* Extra styling voor collapse button */
+.navbar-toggler-icon {
+    background-image: none !important;
+}
+
+.navbar-toggler .navbar-toggler-icon::before {
+    content: "≡";
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.navbar-brand {
+    color: var(--sidebar-text) !important;
+    font-weight: bold;
+}
+
+.nav-item {
+    margin-bottom: 5px;
+}
+
+.nav-link {
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    color: var(--sidebar-text);
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 140, 0, 0.3);
+    color: var(--white);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.nav-item ::deep a {
+    color: var(--sidebar-text);
+}
+
+.nav-item ::deep a.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.nav-item ::deep a:hover {
+    background-color: rgba(255, 140, 0, 0.3);
+    color: var(--white);
+}
+
+/* Top row */
+.top-row {
+    background-color: var(--sidebar-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-row ::deep a {
+    color: var(--sidebar-text);
+}
+
+.top-row ::deep a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Table styling */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+thead {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 140, 0, 0.05);
+}
+
+/* Container padding */
+.container, .container-fluid {
+    padding-bottom: 2rem;
+}
+
+/* Modal dialog */
+.modal {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+    background-color: var(--light-gray);
 }
