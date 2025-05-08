@@ -369,3 +369,53 @@ tbody tr:hover {
     border-top: none;
     background-color: var(--light-gray);
 }
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Ruimte tussen de grid items */
+    padding: 20px; /* Ruimte rondom het hele grid */
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Een beetje afronding voor de hoeken */
+    overflow: hidden; /* Zorgt ervoor dat afbeeldingen binnen de afgeronde hoeken blijven */
+    display: flex; /* Gebruik flexbox binnen elk item om content te centreren/organiseren */
+    flex-direction: column; /* Stapel content verticaal */
+    justify-content: space-between; /* Verdeelt ruimte tussen elementen */
+    height: 100%; /* Zorgt ervoor dat alle kaarten even hoog zijn in een rij */
+    object-fit: cover;
+}
+
+.product-item img {
+    width: 100%; /* Afbeelding vult de breedte van de container */
+    height: auto; /* Hoogte wordt automatisch aangepast om aspect ratio te behouden */
+    object-fit: cover; /* Zorgt ervoor dat de afbeelding de container vult zonder vervorming */
+}
+
+
+.product-item .card-body {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Laat de card-body de resterende ruimte innemen */
+    display: flex; /* Flexbox voor de body inhoud */
+    flex-direction: column;
+    justify-content: space-between; /* Ruimte verdeling in de body */
+}
+
+.product-item .card-title {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.product-item .card-text {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.product-item .card-price {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #007bff; /* Een kleurtje voor de prijs */
+}
