@@ -1,0 +1,347 @@
+/* wwwroot/css/custom.css */
+
+:root {
+    --brand-orange: #FF8C00; /* Donkerder, krachtig oranje */
+    --brand-dark: #222222;   /* Heel donkergrijs (bijna zwart) */
+    --brand-light-gray: #F0F0F0;
+    --brand-medium-gray: #D3D3D3; /* Iets donkerder grijs voor borders etc. */
+    --text-color: #333333;
+    --background-color: #FFFFFF;
+    --link-color: var(--brand-orange);
+    --link-hover-color: #E07B00; /* Iets donkerder oranje voor hover */
+
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Basis Reset & Globale Stijlen */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* Basis lettergrootte */
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--brand-dark);
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Layout Stijlen (gebaseerd op standaard Blazor template structuur) */
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: var(--brand-dark);
+    color: var(--brand-light-gray);
+    padding: 1rem;
+    min-width: 250px; /* Of een andere gewenste breedte */
+}
+
+.sidebar .nav-item {
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.sidebar .nav-link {
+    color: var(--brand-light-gray);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    color: var(--brand-orange);
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-row {
+    background-color: var(--brand-light-gray);
+    border-bottom: 1px solid var(--brand-medium-gray);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Of space-between als je links ook iets wilt */
+    height: auto; /* Aangepast van vaste hoogte */
+}
+
+.top-row a, .top-row .btn-link {
+    color: var(--brand-dark);
+}
+
+.content {
+    padding: 1.5rem; /* Meer padding voor content area */
+    flex-grow: 1;
+}
+
+/* Formulieren & Knoppen */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    background-clip: padding-box;
+    border: 1px solid var(--brand-medium-gray);
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: var(--brand-orange);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25); /* Oranje focus glow */
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--background-color); /* Witte tekst op gekleurde knoppen */
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    color: var(--background-color);
+    background-color: var(--brand-orange);
+    border-color: var(--brand-orange);
+}
+
+.btn-primary:hover {
+    color: var(--background-color);
+    background-color: var(--link-hover-color); /* Donkerder oranje */
+    border-color: var(--link-hover-color);
+}
+
+.btn-secondary {
+    color: var(--background-color);
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+}
+
+.btn-secondary:hover {
+    color: var(--background-color);
+    background-color: #444444; /* Iets lichter dan brand-dark */
+    border-color: #444444;
+}
+
+.btn-success { /* Als je deze gebruikt voor "Add to cart" */
+    color: #fff;
+    background-color: #28a745; /* Standaard groen, kun je ook aanpassen */
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+
+/* Sock Store Specifieke Stijlen */
+.card {
+    border: 1px solid var(--brand-medium-gray);
+    border-radius: 0.375rem; /* Iets rondere hoeken */
+    background-color: var(--background-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Zorgt dat kaarten in een rij gelijke hoogte hebben als ze in flex container zitten */
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.card-img-top {
+    width: 100%;
+    /* height: 200px; Aangepaste hoogte per kaart kan beter zijn of via aspect-ratio */
+    aspect-ratio: 4/3; /* Zorgt voor consistente afbeeldingsverhouding */
+    object-fit: cover;
+    border-top-left-radius: calc(0.375rem - 1px);
+    border-top-right-radius: calc(0.375rem - 1px);
+}
+
+.card-body {
+    padding: 1.25rem;
+    flex-grow: 1; /* Zorgt dat card-body de resterende ruimte vult */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--brand-dark);
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Laat de beschrijving groeien */
+}
+
+.card-text strong { /* Prijs styling */
+    color: var(--brand-orange);
+    font-weight: 700;
+}
+
+/* Product Detail Pagina */
+.product-details-page img.img-fluid {
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+}
+
+.product-details-page h3 {
+    color: var(--brand-orange);
+    margin-bottom: 1rem;
+}
+
+.product-details-page h4 { /* Prijs */
+    color: var(--brand-dark);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Utility classes (optioneel) */
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 1rem !important; }
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-3 { margin-top: 1rem !important; }
+
+.text-orange {
+    color: var(--brand-orange) !important;
+}
+
+/* Media Queries voor responsiviteit (voorbeeld) */
+@media (min-width: 768px) {
+    .page {
+        flex-direction: row; /* Sidebar naast content op grotere schermen */
+    }
+
+    main {
+        width: 100%; /* Zodat main de resterende breedte pakt */
+    }
+
+    .sidebar {
+        /* Eventueel hoogte aanpassen als het niet 100vh is */
+    }
+
+    .content {
+        padding: 2rem;
+    }
+}
+
+/* Aanpassingen voor Blazor's default error UI (als je die gebruikt) */
+#blazor-error-ui {
+    background: var(--brand-light-gray);
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    color: var(--brand-dark);
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+    color: var(--brand-dark);
+}
+
+/* Stijl voor validatieberichten */
+.validation-message {
+    color: #dc3545; /* Rood voor errors */
+    font-size: 0.875em;
+}
+
+.invalid.form-control {
+    border-color: #dc3545;
+}
+
+.valid.form-control {
+    border-color: #28a745;
+}
