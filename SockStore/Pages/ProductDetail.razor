@@ -1,0 +1,71 @@
+@page "/productdetails/{ProductId:int}"
+@using SockStore.Models
+@using SockStore.Services
+@using System.Globalization
+@inject IProductService ProductService
+@inject NavigationManager NavigationManager
+@inject ICartService CartService
+
+<h3>Product Details</h3>
+
+@if (product == null)
+{
+    @if (isLoading)
+    {
+        <p><em>Loading product details...</em></p>
+    }
+    else
+    {
+        <p><em>Product not found.</em> <a href="/products">Back to product list</a></p>
+    }
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@product.ImageUrl" alt="@product.Name" class="img-fluid" />
+            </div>
+            <div class="col-md-6">
+                <h2>@product.Name</h2>
+                <p>@product.Description</p>
+                <h4>Price: @product.Price.ToString("C", new CultureInfo("nl-BE"))</h4>
+                <button class="btn btn-success" @onclick="AddToCart">
+                    <span class="oi oi-cart" aria-hidden="true"></span> Add to Cart
+                </button>
+                <hr />
+                <button class="btn btn-secondary" @onclick="NavigateToProductList">Back to Product List</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; }
+
+    private Sock? product;
+    private bool isLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        isLoading = true;
+        product = null;
+        product = await ProductService.GetProductByIdAsync(ProductId);
+        isLoading = false;
+    }
+
+    private void NavigateToProductList()
+    {
+        NavigationManager.NavigateTo("/products");
+    }
+    
+    private void AddToCart()
+    {
+        if (product != null)
+        {
+            CartService.AddSock(product);
+            Console.WriteLine($"{product.Name} added to cart.");
+        }
+    }
+}

@@ -1,0 +1,92 @@
+@page "/shoppingcart"
+@using SockStore.Models
+@using SockStore.Services
+@inject ICartService CartService
+@inject NavigationManager NavigationManager
+@implements IDisposable
+
+<h3>Shopping Cart</h3>
+
+@if (!cartItems.Any())
+{
+    <p>Your cart is empty. <a href="/products">Go shopping!</a></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in cartItems)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.ImageUrl" alt="@item.Name" style="width: 50px; height: auto; margin-right: 10px;" />
+                        @item.Name
+                    </td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" @onclick="() => RemoveItemFromCart(item.Id)">
+                            <span class="oi oi-trash" aria-hidden="true"></span> Remove
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-end"><strong>Total:</strong></td>
+                <td><strong>@CartService.GetTotalPrice().ToString("C")</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    <button class="btn btn-danger" @onclick="ClearUserCart">Clear Cart</button>
+    <button class="btn btn-primary" @onclick="ProceedToCheckout">Proceed to Checkout (Mock)</button>
+}
+
+@code {
+    private List<Sock> cartItems = [];
+
+    protected override void OnInitialized()
+    {
+        LoadCartItems();
+        CartService.OnCartChanged += HandleCartChanged;
+    }
+
+    private void LoadCartItems()
+    {
+        cartItems = CartService.GetCartSocks();
+    }
+
+    private void HandleCartChanged()
+    {
+        LoadCartItems();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void RemoveItemFromCart(int productId)
+    {
+        CartService.RemoveSock(productId);
+    }
+
+    private void ClearUserCart()
+    {
+        CartService.ClearCart();
+    }
+
+    private void ProceedToCheckout()
+    {
+        // Voor nu, navigeer naar een mock checkout pagina of toon een bericht
+        NavigationManager.NavigateTo("/checkout-mock");
+    }
+
+    public void Dispose()
+    {
+        CartService.OnCartChanged -= HandleCartChanged;
+    }
+}

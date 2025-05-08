@@ -1,0 +1,38 @@
+@page "/products"
+@using SockStore.Models
+@using SockStore.Services
+@using System.Globalization
+@inject IProductService ProductService
+
+<h3>Onze programmeersokken</h3>
+
+@if (socks == null)
+{
+    <p><em>Loading products...</em></p>
+}
+else
+{
+    <div class="product-list">
+        @foreach (var product in socks)
+        {
+            <div class="product-item">
+                <img src="@product.ImageUrl" alt="@product.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-price">@product.Price.ToString("C", new CultureInfo("nl-BE"))</p>
+                    <a href="/productdetails/@product.Id" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<Sock>? socks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        socks = await ProductService.GetProductsAsync();
+    }
+}
