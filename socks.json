@@ -1,0 +1,128 @@
+[
+  {
+    "name": ".NET Developer Socks",
+    "description": "For when your code runs smoother than your feet in these cozy .NET socks. Warning: May cause excessive 'dotnet new' commands.",
+    "price": 12.99,
+    "imageUrl": "Socks-.NET-Woodsmoke.png"
+  },
+  {
+    "name": "Angular Blue Socks",
+    "description": "These socks have better dependency injection than your last project. Two-way data binding for your feet!",
+    "price": 11.99,
+    "imageUrl": "Socks-Angular-blue.png"
+  },
+  {
+    "name": "AngularJS Black Socks",
+    "description": "Legacy support for your feet! Perfect for when you miss $scope and digest cycles.",
+    "price": 10.99,
+    "imageUrl": "Socks-AngularJS-Black.png"
+  },
+  {
+    "name": "Arch Linux Socks",
+    "description": "For developers who compile their own morning coffee. Comes with a built-in superiority complex.",
+    "price": 13.99,
+    "imageUrl": "Socks-Arch Linux-Curious Blue.png"
+  },
+  {
+    "name": "AWS Socks (Ecstasy Edition)",
+    "description": "Guaranteed to reduce cold starts—on your feet, not your Lambda. S3 stands for 'Super Soft Socks'.",
+    "price": 14.99,
+    "imageUrl": "Socks-AWS-Ecstasy.png"
+  },
+  {
+    "name": "AWS Socks (Tulip Tree Edition)",
+    "description": "Multi-region, highly available, and just as overpriced as the real thing. Bill your feet to the cloud.",
+    "price": 15.99,
+    "imageUrl": "Socks-AWS-Tulip Tree.png"
+  },
+  {
+    "name": "Azure Socks",
+    "description": "For when you want Microsoft to hug your feet. Comes with free downtime (just kidding… maybe).",
+    "price": 14.99,
+    "imageUrl": "Socks-Azure-Cerulean.png"
+  },
+  {
+    "name": "C# Socks",
+    "description": "NullReferenceException not included. Perfect for LINQ-ing your toes in style.",
+    "price": 12.99,
+    "imageUrl": "Socks-CSharp-Persian Indigo.png"
+  },
+  {
+    "name": "Docker Astronaut Socks",
+    "description": "Contain your smelly feet in style. Supports multi-layer insulation (just like your images).",
+    "price": 15.99,
+    "imageUrl": "Socks-Docker-Astronaut.png"
+  },
+  {
+    "name": "Elasticsearch Socks",
+    "description": "For when you need full-text search on your toes. Warning: May cause cluster headaches.",
+    "price": 16.99,
+    "imageUrl": "Socks-Elastic Search-Ripe Lemon.png"
+  },
+  {
+    "name": "Git Socks",
+    "description": "For those who love `git commit --amend` a little too much. Warning: May cause merge conflicts with sandals.",
+    "price": 11.99,
+    "imageUrl": "Socks-Git-Cinnabar.png"
+  },
+  {
+    "name": "Go Lang Socks",
+    "description": "Compiles faster than you can say 'Where are my generics?' Lightweight, just like Go routines.",
+    "price": 13.99,
+    "imageUrl": "Socks-Go-Cod Gray.png"
+  },
+  {
+    "name": "JavaScript Socks",
+    "description": "Works equally well on frontend and backend feet. NaN% chance of disappointment!",
+    "price": 12.99,
+    "imageUrl": "Socks-Java Script-Golden Dream.png"
+  },
+  {
+    "name": "Kubernetes Socks",
+    "description": "Orchestrate your toes in style. Now with 100% less YAML frustration (socks only, actual K8s not included).",
+    "price": 16.99,
+    "imageUrl": "Socks-Kubernetes-Medium Purple.png"
+  },
+  {
+    "name": "MongoDB Socks",
+    "description": "NoSQL for your feet. Schemaless, just like your weekend coding projects.",
+    "price": 14.99,
+    "imageUrl": "Socks-MongoDB-Kabul.png"
+  },
+  {
+    "name": "Node.js Socks",
+    "description": "Single-threaded but double-layered for maximum comfort. Callback hell not included.",
+    "price": 13.99,
+    "imageUrl": "Socks-NODE.JS-Mine Shaft.png"
+  },
+  {
+    "name": "Python Socks (Ronchi Edition)",
+    "description": "Indentation errors now possible on your feet. Finally, whitespace that matters!",
+    "price": 12.99,
+    "imageUrl": "Socks-Python-Ronchi.png"
+  },
+  {
+    "name": "React Socks",
+    "description": "Because your feet deserve a virtual DOM too. Now with hooks (but not the smelly kind).",
+    "price": 13.99,
+    "imageUrl": "Socks-React-blue.png"
+  },
+  {
+    "name": "TypeScript Socks",
+    "description": "All the JavaScript fun, but with type-safe toes. No more `any` foot odor!",
+    "price": 14.99,
+    "imageUrl": "Socks-TypeScript-Lochmara.png"
+  },
+  {
+    "name": "Vue.js Socks",
+    "description": "Reactive, composable, and just as easy to put on as Vue is to learn.",
+    "price": 13.99,
+    "imageUrl": "Socks-Vue-blue.png"
+  },
+  {
+    "name": "404 Socks Not Found",
+    "description": "For when your feet disappear into the void. Just like your missing semicolon.",
+    "price": 9.99,
+    "imageUrl": "socks-not-found.webp"
+  }
+]
